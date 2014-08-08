@@ -1,0 +1,33 @@
+page1 = {
+	show:[
+		{
+			id:2,src:'default.jpg'
+		},
+		{
+			id:1,content:'这里添加文本'
+		}],
+	editBtns:[1]
+	}
+
+page2 = {
+	show:[
+		{
+			id:3,theme:'default'
+		}],
+	editBtns:[1]
+	}
+
+page3 = {
+	show:[
+		{id:4,itmes:['北京','上海','广州','天津','大连']},
+	],
+	editBtns:[]
+}
+
+page4 = {
+	show:[
+		{id:1,content:'恭喜您领取成功!'},
+		{id:2,src:'default.jpg'}
+	],
+	editBtns:[1]
+}
