@@ -99,21 +99,14 @@ $(function() {
 					// autoHeightMode : true
 	// })
 // });
-var MdList=["fullText","img","msgVerify"];
+var MdList=["","fullText","img","msgVerify"];
 function addModule(data){
-	var showList = data.show;
-	var allId = $.each(showList,function(i,o){
-		var tmplData=null;
-		switch(o.id){
-			case 2:
-				tmplData = o.src;
-				break;
-			case 1:
-				tmplData = o.content;
-				break;
-		}
-		$("."+MdList[o.id]).appendTo("#mobile-body");
-		alert("."+MdList[o.id])
+	var show = data.show;
+	$.each(show,function(i,o){
+		var tmplData=o;
+		var markup = $("."+MdList[o.id]).html();
+		$.template("controlTmpl",markup);
+		$.tmpl("controlTmpl",tmplData).appendTo("#mobile-body");
 	});
 }
 addModule(page1);

@@ -203,13 +203,15 @@
 <!-- module tmpl begin -->
 <div class="tmpl-container">
 <!-- @ class=page 分页切换用，与内容无关 -->
-	<div class="page">
+	<div class="img">
 		<!-- 富文本 开始-->
-		<div class="img pic module" data-appid="details-pic">
-			<img src="images/tmall.jpg" alt="" />
+		<div class=" pic module" data-appid="details-pic">
+			<img src=images/${src} alt="" />
 		</div>
-		<div class="fullText txt module" data-appid="details-txt">
-			编辑此处文本
+	</div>
+	<div class="fullText">	
+		<div class="txt module" data-appid="details-txt">
+			${content}
 		</div>
 		<!-- 富文本 结束-->
 	</div>
