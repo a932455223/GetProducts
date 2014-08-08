@@ -149,8 +149,13 @@
 			<div class="control-group">
 				<label for="" class="control-label">修改图片：</label>
 				<div class="control">
-					<a href="#" class="dialog">上传</a>
-					<p class="hint">暂未开放</p>
+					<!-- <a href="#" class="dialog">上传</a>
+					<p class="hint">暂未开放</p> -->
+					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="container">
+					    <a id="pickfiles" href="javascript:;">[Select files]</a> 
+					    <a id="uploadfiles" href="javascript:;">[Upload files]</a>
+					</div>					
 				</div>
 			</div>
 		</form>    		
@@ -172,11 +177,11 @@
 			<div class="control-group">
 				<label for="" class="control-label">描述或其他：</label>
 				<div class="control">
-					<input class="input-l" type="text" value="显示店铺的名称" />
+					<input class="input-l" type="text" value="怎么验证" />
 				</div>
 			</div>
 		</form>    		
-	</div>    	  	
+	</div>	    	  	
 </div>    	              
 		<!-- tmpl end -->
 		</div>
@@ -202,51 +207,47 @@
 </div>	
 <!-- module tmpl begin -->
 <div class="tmpl-container">
-<!-- @ class=page 分页切换用，与内容无关 -->
-	<div class="page">
+	<div class="img">
 		<!-- 富文本 开始-->
-		<div class="img pic module" data-appid="details-pic">
-			<img src="images/tmall.jpg" alt="" />
+		<div class=" pic module" data-appid="details-pic">
+			<img src=images/${src} alt="" />
 		</div>
-		<div class="fullText txt module" data-appid="details-txt">
-			编辑此处文本
+	</div>
+	<div class="fullText">	
+		<div class="txt module" data-appid="details-txt">
+			${content}
 		</div>
 		<!-- 富文本 结束-->
 	</div>
-	<div class="page">
+	<div class="msgVerify">
 	<!-- 手机验证 开始 -->
-	<div class="validate module" data-appid="ph-validate">
-		<div class="control-group">
-			<div class="control">
-				<input class="input-l" type="text" value="输入手机号码" />
-				<input class="input-l" type="button" value="获取验证码" />
-			</div>
-			<div class="control">
-				<input class="input-l" type="text" value="输入验证码" />
-				<input class="input-l" type="button" value="立即领取" />
+		<div class="validate module" data-appid="ph-validate">
+			<div class="control-group">
+				<div class="control">
+					<input class="input-l" type="text" value="输入手机号码" />
+					<input class="input-l" type="button" value="获取验证码" />
+				</div>
+				<div class="control">
+					<input class="input-l" type="text" value="输入验证码" />
+					<input class="input-l" type="button" value="立即领取" />
+				</div>
+				<input type="button" value=${theme} />
 			</div>
 		</div>
-	</div>
 	<!-- 手机验证 结束 -->
 	</div>
-	<div class="page">
-	<!-- 选择门店 开始-->
-	<div class="Add" data-appid="Add">
-		<div class="location">
-            <div class="item hd">上海 ></div>
-            <div class="item">黄浦区</div>
-            <div class="item">卢湾区</div>
-            <div class="item">徐汇区</div>
-            <div class="item">长宁区</div>
-            <div class="item">静安寺</div>
-            <div class="item">普陀区</div>
-            <div class="item">闸北区</div>
-            <div class="item">虹口区</div>
+	<div class="locationInfo">
+		<!-- 选择门店 开始-->
+		<div class="Add" data-appid="Add">
+			<div class="location">
+		    {{each items}}
+		        <div>{{= $value}}</div>
+		    {{/each}}
+			</div>
 		</div>
-	</div>
-	<!-- 选择门店 结束-->
+		<!-- 选择门店 结束-->
 	</div> 	
-</div>	
+</div>		
 <!-- module tmpl end -->
 <script src="js/jquery.js"></script>
 <script src="js/JQueryUI/jquery-ui.min.js"></script>
@@ -254,8 +255,9 @@
 <script src="js/draggable.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script src="js/less-1.7.0.min.js"></script>
-<script src="js/kindeditor-all-min.js"></script>
+<script src="js/kindeditor-all.js"></script>
 <script src="js/txtJson.json"></script>
+<script type="text/javascript" src="js/plupload.full.min.js"></script>
 <script src="js/popover.js"></script>
 </body>
 </html>

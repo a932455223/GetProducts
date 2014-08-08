@@ -1,7 +1,7 @@
 page1 = {
 	show:[
 		{
-			id:2,src:'default.jpg'
+			id:2,src:'tmall.jpg'
 		},
 		{
 			id:1,content:'这里添加文本'
@@ -19,7 +19,7 @@ page2 = {
 
 page3 = {
 	show:[
-		{id:4,itmes:['北京','上海','广州','天津','大连']},
+		{id:4,items:['北京','上海','广州','天津','大连']},
 	],
 	editBtns:[]
 }
