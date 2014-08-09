@@ -177,5 +177,7 @@ function addModule(data){
 	});
 }
 addModule(page1);
+addModule(page1);
+addModule(page2);
 addModule(page2);
 addModule(page3);
