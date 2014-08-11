@@ -91,7 +91,7 @@ popover.upload = function(){
 };
 
 //显示并定位编辑框
-$("#mobile-body").on("click",".module",function(e){
+$("#editor_body").on("click",".module",function(e){
 	$("#popover").show();
 	popover.target = e.currentTarget;
 	popover.posTop = e.currentTarget.offsetTop;	

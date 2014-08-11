@@ -7,6 +7,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="css/common.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet/less" href="css/popover.less" />
 </head>
 <body>
 <header class="header">
@@ -130,183 +131,13 @@
 					</ul>
 				</div>
 			</div>
-			<div class="area_edit phone_sidebar">
-				<div class="appmsg_editor" style="padding-top:80px;">
-					<div class="inner">
-						<i class="arrow arrow_out"></i>
-						<i class="arrow arrow_in"></i>
-						<div class="group_inner">
-							<div class="control_group">
-								<div class="control_label">图片设置：</div>
-								<div class="controls">
-									<div class="picture_list">
-										<ul class="clearfix">
-											<li>
-												<a href="#">
-													<img src="http://zcimg.zcool.com.cn/zcimg/c_m_012f53d6e7c900000115b74b4516.jpg">
-												</a>
-												<span class="close_modal" href="#">×</span>
-											</li>
-											<li>
-												<a class="add_goods" href="#">+加图</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="control_group">
-								<div class="control_label">名称：</div>
-								<div class="controls">
-									<input type="text" class="form_input input_100percent">
-								</div>
-							</div>
-							<div class="control_group">
-								<div class="control_label">城市：</div>
-								<div class="controls">
-									<div class="select_class">
-										<a href="#" class="select_choice">选择大区<i class="select_arrow"></i></a>
-										<div class="select_list" style="display: none">
-											<input type="text">
-											<ul>
-												<li>华北区</li>
-												<li>华南区</li>
-											</ul>
-										</div>
-									</div>
-									<div class="select_class">
-										<a href="#" class="select_choice">选择城市<i class="select_arrow"></i></a>
-										<div class="select_list" style="display: none">
-											<input type="text">
-											<ul>
-												<li>上海市</li>
-												<li>厦门市</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="control_group">
-								<div class="controls">
-									<div class="tablelist">
-										<div class="tablelist_bd">
-											<table class="stable">
-												<thead>
-													<tr>
-														<th width="20">
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</th>
-														<th>门店</th>
-														<th width="130">派发数量</th>
-														<th width="50">已派发</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>
-															<label class="frm_checkbox_label">
-											                    <i class="icon16_common icon_checkbox"></i>
-											                </label>
-														</td>
-														<td>
-															【龙之梦店】
-														</td>
-														<td>
-															<input class="form_input input_xlarge" value="10" type="text">
-														</td>
-														<td>0</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="tablelist_ft">
-											<label class="frm_checkbox_label">
-							                    <i class="icon16_common icon_checkbox"></i>
-							                    全选
-							                </label>
-							                <div class="tablelist_ft_right">
-												派发数量：<input class="form_input input_xlarge" value="10" type="text">
-												<a href="#" class="btn btn_default">确定</a>
-							                </div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        <!-- popover begin -->
+        <div id="popover" class="area_edit phone_sidebar">
+        	<div class="popover-inner">
+
+        	</div>
+        </div>
+        <!-- popover end -->  
 		</div>
 		<div class="page_bottom tc">
 			<a href="#" class="btn btn_primary">完成</a>
@@ -319,7 +150,7 @@
 	<!-- 富文本 -->
 	<div id="fullText_tmpl">
 		<li>
-			<div class='fullText'>
+			<div class='fullText module'>
 				${content}
 			</div>
 		</li>
@@ -327,7 +158,7 @@
 	<!-- 图片区域 -->
 	<div id="img_tmpl">
 		<li data-form="{id:${id},src:'${src}'}">
-			<div class='img'>
+			<div class='img module'>
 				<img src='${src}' />
 			</div>
 		</li>
@@ -335,7 +166,7 @@
 	<!-- 手机验证 -->
 	<div id="msgVerify_tmpl">
 		<li>
-			<div class='msgVerify'>
+			<div class='msgVerify module'>
 				<div class="row clearfix">
 					<div class="phone_number fl"></div>
 					<span class="get_code"> 获取验证码 </span>
@@ -375,11 +206,56 @@
 	</div>
 </div>
 </div>
+<!-- tmpl begin -->
+<div id="popoverContent">
+	<!-- 活动图片 -->
+	<div class="img">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">修改图片：</label>
+				<div class="control">
+					<!-- <a href="#" class="dialog">上传</a>
+					<p class="hint">暂未开放</p> -->
+					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="container">
+					    <a id="pickfiles" href="javascript:;">[Select files]</a> 
+					    <a id="uploadfiles" href="javascript:;">[Upload files]</a>
+					</div>					
+				</div>
+			</div>
+		</form>    		
+	</div>
+	<!-- 活动文字 -->
+	<div class="fullText">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">活动描述：</label>
+				<div class="control">
+					<textarea name="details" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+		</form>    		
+	</div>    	
+	<!-- 验证码-->
+	<div class="msgVerify">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">描述或其他：</label>
+				<div class="control">
+					<input class="input-l" type="text" value="怎么验证" />
+				</div>
+			</div>
+		</form>    		
+	</div>	    	  	
+</div>    	              
+<!-- tmpl end -->
 <link rel="stylesheet/less" href="css/phone-editor.less">
 <script src="js/less-1.7.0.min.js"></script>
 <script type="text/javascript" src="js/jquery-1-8-3.js"></script>
 <script type="text/javascript" src='js/JQueryUI/jquery-ui.min.js'></script>
 <script type="text/javascript" src="js/jquery.tmpl.js"></script>
+<script src="js/kindeditor-all.js"></script>
+<script type="text/javascript" src="js/plupload.full.min.js"></script>
 <script type="text/javascript" src='js/newIndex.js'></script>
 <script type="text/javascript" src="js/common.js"></script>
 </body>
