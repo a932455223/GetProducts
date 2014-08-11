@@ -21,6 +21,7 @@ popover.editor = function(){
 	var _this = this;
 	var K=window.KindEditor;
 	window.editor = K.create('textarea', {
+		
 		allowFileManager : true,
 		langType : 'zh-CN',
 		autoHeightMode : true,
@@ -31,13 +32,17 @@ popover.editor = function(){
 		'removeformat','hr','link','unlink','fullscreen','lineheight','clearhtml'],
 		//初始化回调
 		afterCreate:function(){
-			this.text(popover.getDataForm.context)
+			this.html(popover.getDataForm());
 		},
 		//编辑器发生改变后执行
 		afterChange:function(){
-			// console.log(this.text());
+			var thisEditor = this;
 			// @editor.text() 文本内容
-			_this.target.innerHTML = this.text();
+			// @setTimeout 初始化编辑器时会先触发此回调，导致内容清空
+			setTimeout(function(){
+				popover.setDataForm(thisEditor.html());
+				// popover.target.innerHTML = thisEditor.text();
+			},300);
 		}
 	});
 	// editor.sync(".txt");
@@ -89,10 +94,12 @@ popover.upload = function(){
 	uploader.init();
 };
 popover.setDataForm = function(content){
-	popover.target.dataset.form = content;
+	popover.target.dataset.form =content;
+	popover.target.innerHTML = content;
 };
-popover.getDataForm = function (){
-	return popover.target.dataset.form;  
+popover.getDataForm = function(){
+	return $(popover.target).html();
+	// return JSON.parse(popover.target.dataset.form);
 };
 page1 = {
 	show:[
@@ -127,8 +134,13 @@ page4 = {
 	],
 	editBtns:[1]
 };
-
 //模拟数据结束
+//默认模块数据
+var default_config = ['',
+	{id:1,content:'这里添加文本'},
+	{id:2,src:'images/default.jpg'},
+	{id:3,theme:'default'},
+	{id:4,itmes:['北京','上海','广州','天津','大连']}];
 //组件列表
 var components = ['','fullText','img','msgVerify','locationInfo','imgAd','title','textNav','imgNav','listLink','goodSearch','showcase','subline','blankSpace'];
 //按钮列表
@@ -144,7 +156,8 @@ function addComponentToView(component,container){
 	if(!container){
 		container = '#editor_body';
 	}
-	$('#'+components[component.id]+'_tmpl').find("div").attr("data-identity",components[component.id]);
+	$('#'+components[component.id]+'_tmpl').find("div")
+	.attr({"data-identity":components[component.id],"data-form":JSON.stringify(component)});
 	$('#'+components[component.id]+'_tmpl').tmpl(component).appendTo(container);
 }
 
@@ -202,7 +215,7 @@ $(document).ready(function(){
 	$('#btn_container').on('click','li a',function(e){
 		var $this = $(this);
 		var relatedComponentId = $this[0].dataset.relateid;
-		var com = {id:relatedComponentId,content:'这里填写内容'};
+		var com = default_config[relatedComponentId];
 		addComponentToView(com);
 	});
 });
