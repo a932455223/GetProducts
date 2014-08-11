@@ -4,6 +4,9 @@ var popover = {
 	target:null,
 	moduleId:null,
 };
+popover.hide = function(){
+	this.layoutWrap.style.display = "none";
+};
 popover.pos = function(){	
 	// this.layoutWrap.style.top = this.posTop + "px";
 	$(this.layoutWrap).animate({top:this.posTop + "px"},300) ;
@@ -104,6 +107,18 @@ popover.getDataForm = function(){
 	return $(popover.target).html();
 	// return JSON.parse(popover.target.dataset.form);
 };
+//切换验证框皮肤
+$(".popover-inner").on("click","input[name='skin']",function(e){
+	var index = e.currentTarget.value;
+	switch(index){
+		case "0":
+		$(popover.target).removeClass("red");
+		break;
+		case "1":
+		$(popover.target).addClass("red");
+		break;
+	}
+});
 var pagelist = [
 {
 	show:[
@@ -134,7 +149,7 @@ var pagelist = [
 {
 	show:[
 		{id:1,content:'恭喜您领取成功!'},
-		{id:2,src:'default.jpg'}
+		{id:2,src:'images/default.jpg'}
 	],
 	editBtns:[1]
 }];
@@ -143,7 +158,7 @@ var pagelist = [
 var default_config = ['',
 	{id:1,content:'这里添加文本'},
 	{id:2,src:'images/default.jpg'},
-	{id:3,theme:'default'},
+	{id:3,theme:'images/default.jpg'},
 	{id:4,itmes:['北京','上海','广州','天津','大连']}];
 //组件列表
 var components = ['','fullText','img','msgVerify','locationInfo','imgAd','title','textNav','imgNav','listLink','goodSearch','showcase','subline','blankSpace'];
@@ -210,7 +225,6 @@ function getAllData($nodelist){
 	});
 	return arr;
 };
-
 $(document).ready(function(){
 	//@$('#editor_body') 内容模块容器
 	var $editor = $('#editor_body'),
@@ -229,26 +243,32 @@ $(document).ready(function(){
 	loadDefaultComponent(pagelist[0].show);
 	//加载按钮
 	loadDefaultBtn(pagelist[0].editBtns);
-	
+	//翻页
+	function pageTurns(){
+		$editor.html("");
+		$("#btn_container").html("");
+		loadDefaultComponent(pagelist[page].show);
+		loadDefaultBtn(pagelist[page].editBtns);	
+		var uploadModuleConfig = getAllData($("#editor_body .module"));
+		//流程标识active切换
+		$(".dash_bar li:even").eq(page).addClass("active")
+		.siblings().removeClass("active");
+		//当有popover显示时隐藏它
+		popover.hide();
+	}	
 	$("#prev").click(function(){
 		if(page==0){
 			return;
 		}
-			page--;
-		$editor.html("");
-		$("#btn_container").html("");
-		loadDefaultComponent(pagelist[page].show);
-		loadDefaultBtn(pagelist[page].editBtns);
+		page--;
+		pageTurns();	
 	});
 	$("#next").click(function(){
 		if(page==pagelist.length-1){
 			return;
 		}
 		page++;
-		$editor.html("");
-		$("#btn_container").html("");
-		loadDefaultComponent(pagelist[page].show);
-		loadDefaultBtn(pagelist[page].editBtns);
+		pageTurns();
 	});
 	//视图模块绑定事件，调用编辑框
 	$editor.on('click','.module',function(e){
@@ -275,5 +295,5 @@ $(document).ready(function(){
 		addComponentToView(com);
 	});
 	//所有data-form值 [{},{},{}]
-	var uploadModuleConfig = getAllData($("#editor_body .module"));
+	
 });
