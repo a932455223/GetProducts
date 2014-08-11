@@ -195,12 +195,12 @@ $(document).ready(function(){
 	//加载按钮
 	loadDefaultBtn(page1.editBtns);
 	//绑定事件
-	$('#editor_body').on('click','li',function(e){
+	$('#editor_body').on('click','.module',function(e){
 		var $this = $(this);
 		$this.siblings().removeClass('current').end().addClass('current');
 		//显示编辑框
 		$("#popover").show();
-		popover.target = $this.find("div")[0];
+		popover.target = $this[0];
 		popover.posTop = popover.target.offsetTop;	
 		popover.pos().loadContent();	
 		if(popover.target.dataset.identity == "fullText"){
