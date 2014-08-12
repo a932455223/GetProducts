@@ -166,11 +166,25 @@
     padding: 10px;
     color: #333;
   }
+}
+#editor_body{
   .msgVerify{
-    padding-top: 20px;
+    padding: 20px 0;
     .get_immediately{
       width:100%!important;
     }
-  }
+    .fbtn,.finput{
+        line-height:35px;
+        text-indent:4px;      
+    }    
+    &.red{
+      background: #ffffcc;
+      .fbtn,.finput{
+        border:1px solid #000;
+      }
+      .fbtn{
+        background: -webkit-linear-gradient(top,#fff,#eee);
+      }      
+    }
+  }  
 }
-

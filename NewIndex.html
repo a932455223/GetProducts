@@ -168,16 +168,16 @@
 		<li>
 			<div class='msgVerify module'>
 				<div class="row clearfix">
-					<div class="phone_number fl"></div>
-					<span class="get_code"> 获取验证码 </span>
+					<div class="phone_number finput fl">请输入手机号</div>
+					<span class="get_code fbtn"> 获取验证码 </span>
 				</div>
 				<div class="blank"></div>
 				<div class="row">
-					<div class="input_code"></div>
+					<div class="input_code finput">请输入验证码</div>
 				</div>
 				<div class="blank"></div>
 				<div class="row text_center">
-					<span class="get_immediately">点击领取</span>
+					<span class="get_immediately fbtn">点击领取</span>
 				</div>
 			</div>
 		</li>
@@ -240,9 +240,10 @@
 	<div class="msgVerify">
 		<form action="">
 			<div class="control-group">
-				<label for="" class="control-label">描述或其他：</label>
+				<label for="" class="control-label">皮肤：</label>
 				<div class="control">
-					<input class="input-l" type="text" value="怎么验证" />
+					<label for="" class="radio inline"><input type="radio" name="skin" value="0" checked="" />默认</label>
+					<label for="" class="radio inline"><input type="radio" name="skin" value="1" />活跃</label>
 				</div>
 			</div>
 		</form>    		
@@ -257,6 +258,6 @@
 <script src="js/kindeditor-all.js"></script>
 <script type="text/javascript" src="js/plupload.full.min.js"></script>
 <script type="text/javascript" src='js/newIndex.js'></script>
-<script type="text/javascript" src="js/common.js"></script>
+<!-- <script type="text/javascript" src="js/common.js"></script> -->
 </body>
 </html>
