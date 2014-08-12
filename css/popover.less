@@ -104,6 +104,17 @@
 				float: none;
 			}
 		}
+		#pickfiles,#uploadfiles{
+		  border:1px solid #ccc;
+		  border-radius:1px;
+		  background: #fff;
+		  color: #333;
+		  padding:6px;
+		}
+		#uploadfiles{
+		  color: #fff;
+		  background: #ffa200;
+		}
 	}	
 }
 /*编辑框内容容器*/
@@ -156,4 +167,24 @@
     color: #333;
   }
 }
-
+#editor_body{
+  .msgVerify{
+    padding: 20px 0;
+    .get_immediately{
+      width:100%!important;
+    }
+    .fbtn,.finput{
+        line-height:35px;
+        text-indent:4px;      
+    }    
+    &.red{
+      background: #ffffcc;
+      .fbtn,.finput{
+        border:1px solid #000;
+      }
+      .fbtn{
+        background: -webkit-linear-gradient(top,#fff,#eee);
+      }      
+    }
+  }  
+}

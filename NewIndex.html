@@ -8,6 +8,7 @@
 <meta name="keywords" content="">
 <link href="css/common.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet/less" href="css/popover.less" />
+<link rel="stylesheet/less" href="css/phone-editor.less">
 </head>
 <body>
 <header class="header">
@@ -115,8 +116,8 @@
 		<div class="appmsg_edit">
 			<div class="phone_preview">
 				<div class="phone_hd">
-					<a class="oprpage" href="javascript:void(0);">上一页</a>
-					<a class="oprpage next" href="javascript:void(0);">下一页</a>
+					<a class="oprpage" id="prev" href="javascript:void(0);">上一页</a>
+					<a class="oprpage next" id="next" href="javascript:void(0);">下一页</a>
 				</div>
 				<div class="phone_bd">
 					<div id='editor_title' class='page_title'>标题</div>
@@ -168,16 +169,16 @@
 		<li>
 			<div class='msgVerify module'>
 				<div class="row clearfix">
-					<div class="phone_number fl"></div>
-					<span class="get_code"> 获取验证码 </span>
+					<div class="phone_number finput fl">请输入手机号</div>
+					<span class="get_code fbtn"> 获取验证码 </span>
 				</div>
 				<div class="blank"></div>
 				<div class="row">
-					<div class="input_code"></div>
+					<div class="input_code finput">请输入验证码</div>
 				</div>
 				<div class="blank"></div>
 				<div class="row text_center">
-					<span class="get_immediately">点击领取</span>
+					<span class="get_immediately fbtn">点击领取</span>
 				</div>
 			</div>
 		</li>
@@ -218,8 +219,8 @@
 					<p class="hint">暂未开放</p> -->
 					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
 					<div id="container">
-					    <a id="pickfiles" href="javascript:;">[Select files]</a> 
-					    <a id="uploadfiles" href="javascript:;">[Upload files]</a>
+					    <a id="pickfiles" href="javascript:;">+添加图片</a> 
+					    <a id="uploadfiles" href="javascript:;">上传</a>
 					</div>					
 				</div>
 			</div>
@@ -240,16 +241,17 @@
 	<div class="msgVerify">
 		<form action="">
 			<div class="control-group">
-				<label for="" class="control-label">描述或其他：</label>
+				<label for="" class="control-label">皮肤：</label>
 				<div class="control">
-					<input class="input-l" type="text" value="怎么验证" />
+					<label for="" class="radio inline"><input type="radio" name="skin" value="0" checked="" />默认</label>
+					<label for="" class="radio inline"><input type="radio" name="skin" value="1" />活跃</label>
 				</div>
 			</div>
 		</form>    		
 	</div>	    	  	
 </div>    	              
 <!-- tmpl end -->
-<link rel="stylesheet/less" href="css/phone-editor.less">
+
 <script src="js/less-1.7.0.min.js"></script>
 <script type="text/javascript" src="js/jquery-1-8-3.js"></script>
 <script type="text/javascript" src='js/JQueryUI/jquery-ui.min.js'></script>
@@ -257,6 +259,5 @@
 <script src="js/kindeditor-all.js"></script>
 <script type="text/javascript" src="js/plupload.full.min.js"></script>
 <script type="text/javascript" src='js/newIndex.js'></script>
-<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>
