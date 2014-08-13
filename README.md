@@ -37,6 +37,7 @@ GetProducts后端可能需要的接口
 参数：$nodelist (类型是jquery包装集)
 在本例中：`$nodelist = $('#editor_body .module	');`
 返回值：`[{},{},{}]`,其中`{}`是一个组件
+获取值`var uploadModuleConfig = getAllData($("#editor_body .module"));`
 
 <<<<<<< HEAD
 领取试用装

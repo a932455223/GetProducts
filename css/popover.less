@@ -168,15 +168,12 @@
   }
 }
 #editor_body{
+  .current{outline:2px dashed rgba(255,0,0,0.5);}
   .msgVerify{
     padding: 20px 0;
     .get_immediately{
       width:100%!important;
-    }
-    .fbtn,.finput{
-        line-height:35px;
-        text-indent:4px;      
-    }    
+    }  
     &.red{
       background: #ffffcc;
       .fbtn,.finput{
@@ -186,5 +183,16 @@
         background: -webkit-linear-gradient(top,#fff,#eee);
       }      
     }
-  }  
+  }
+  .locationInfo{
+    padding: 20px 0;
+    .row{
+      line-height:35px;
+      text-align: left;
+     }
+  }
+  .fbtn,.finput{
+      line-height:35px;
+      text-indent:4px;      
+  }      
 }

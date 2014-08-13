@@ -221,7 +221,7 @@ function loadDefaultBtn(btns){
 function getAllData($nodelist){
 	var arr = [];
 	$nodelist.each(function(i,o){
-		arr[i] = o.dataset.form;
+		arr[i] = JSON.parse(o.dataset.form);
 	});
 	return arr;
 };
@@ -249,6 +249,7 @@ $(document).ready(function(){
 		$("#btn_container").html("");
 		loadDefaultComponent(pagelist[page].show);
 		loadDefaultBtn(pagelist[page].editBtns);	
+		//上传数据接口
 		var uploadModuleConfig = getAllData($("#editor_body .module"));
 		//流程标识active切换
 		$(".dash_bar li:even").eq(page).addClass("active")
@@ -273,7 +274,7 @@ $(document).ready(function(){
 	//视图模块绑定事件，调用编辑框
 	$editor.on('click','.module',function(e){
 		var $this = $(this);
-		$this.siblings().removeClass('current').end().addClass('current');
+		$this.addClass('current').parent().siblings().find(".module").removeClass('current');
 		//显示编辑框
 		$("#popover").show();
 		popover.target = $this[0];
