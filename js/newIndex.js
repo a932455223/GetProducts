@@ -36,16 +36,23 @@ popover.editor = function(){
 		//初始化回调
 		afterCreate:function(){
 			this.html(popover.getDataForm());
+			_this.str1 = _this.target.dataset.identity;
 		},
 		//编辑器发生改变后执行
 		afterChange:function(){
 			var thisEditor = this;
 			// @editor.text() 文本内容
 			// @setTimeout 初始化编辑器时会先触发此回调，导致内容清空
-			setTimeout(function(){
-				popover.setDataForm(thisEditor.html());
+			_this.tiemr = setTimeout(function(){
+				_this.str2 = _this.target.dataset.identity;
+				// console.log(_this.str1+"---"+_this.str2);
+				clearTimeout(_this.tiemr);
+				//判断被编辑模块 target 是否发生改变
+				if(_this.str1==_this.str2){
+					popover.setDataForm(thisEditor.html());
+				}
 				// popover.target.innerHTML = thisEditor.text();
-			},50);
+			},100);
 		}
 	});
 	// editor.sync(".txt");
