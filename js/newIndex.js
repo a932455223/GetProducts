@@ -45,7 +45,7 @@ popover.editor = function(){
 			setTimeout(function(){
 				popover.setDataForm(thisEditor.html());
 				// popover.target.innerHTML = thisEditor.text();
-			},300);
+			},50);
 		}
 	});
 	// editor.sync(".txt");
