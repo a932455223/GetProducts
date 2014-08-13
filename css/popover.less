@@ -190,6 +190,17 @@
       line-height:35px;
       text-align: left;
      }
+     .finput{
+       position: relative;
+       &:after{
+         position: absolute;
+         right:10px;
+         top:12px;
+         content:"";
+         border:10px solid transparent;
+         border-top-color:#000;
+       }
+     }
   }
   .fbtn,.finput{
       line-height:35px;
