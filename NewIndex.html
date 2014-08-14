@@ -7,6 +7,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="css/common.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet/less" href="css/slideControl.css" />
 <link rel="stylesheet/less" href="css/popover.less" />
 <link rel="stylesheet/less" href="css/phone-editor.less">
 </head>
@@ -148,6 +149,13 @@
 </div>
 <div class="alert" style="display:none"><i></i><span>正在处理您的请求...</span></div>
 <div class="tmpl_container">
+	<!-- 辅助空白 -->
+	<div id="blankSpace_tmpl">
+		<li>
+			<div class='blankSpace module' style='height: ${height}'>
+			</div>
+		</li>
+	</div>	
 	<!-- 富文本 -->
 	<div id="fullText_tmpl">
 		<li>
@@ -248,7 +256,15 @@
 				</div>
 			</div>
 		</form>    		
-	</div>	    	  	
+	</div>
+	<!-- 辅助空白-->
+	<div class="blankSpace">
+		<form action="">
+			<div class="control-group">
+				<label class="control-label">空白高度: </label><input type="text" value="3" class="slideControl" maxlength="3" />
+			</div>
+		</form>    		
+	</div>			    	  	
 </div>    	              
 <!-- tmpl end -->
 
@@ -258,6 +274,7 @@
 <script type="text/javascript" src="js/jquery.tmpl.js"></script>
 <script src="js/kindeditor-all.js"></script>
 <script type="text/javascript" src="js/plupload.full.min.js"></script>
+<script type="text/javascript" src="js/jquery.slideControl.js"></script>
 <script type="text/javascript" src='js/newIndex.js'></script>
 </body>
 </html>

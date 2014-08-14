@@ -45,7 +45,7 @@ popover.editor = function(){
 			// @setTimeout 初始化编辑器时会先触发此回调，导致内容清空
 			_this.tiemr = setTimeout(function(){
 				_this.str2 = _this.target.dataset.identity;
-				// console.log(_this.str1+"---"+_this.str2);
+				console.log(_this.str1==_this.str2);
 				clearTimeout(_this.tiemr);
 				//判断被编辑模块 target 是否发生改变
 				if(_this.str1==_this.str2){
@@ -103,12 +103,32 @@ popover.upload = function(){
 	});
 	uploader.init();
 };
-popover.setDataForm = function(content){
+popover.blank = function(){
+	var _this = this;
+	$('.slideControl').slideControl();
+	$("#popover").on("mousemove mousedown mouseout",'.slideControlContainer',setHeight);
+	function setHeight(){
+		//document.title = $('.slideControlInput').val();
+		_this.target.style.height = $('.slideControlInput').val()*10 + "px";
+		_this.setDataForm($('.slideControlInput').val()*10 + "px");
+	}
+};
+popover.setDataForm = function(option){
 	var obj = {};
 	obj.id = popover.target.dataset.index;
-	obj.content = content;
+	switch(this.target.dataset.identity){
+		case "fullText":
+		obj.content = option;
+		popover.target.innerHTML = option;
+		break;
+		case "img":
+		obj.src = option;
+		break;
+		case "blankSpace":
+		obj.height = option;
+		break;
+	}
 	popover.target.dataset.form = JSON.stringify(obj);
-	popover.target.innerHTML = content;
 };
 popover.getDataForm = function(){
 	return $(popover.target).html();
@@ -133,9 +153,12 @@ var pagelist = [
 			id:2,src:'images/default.jpg'
 		},
 		{
+			id:13,height:'30px'
+		},		
+		{
 			id:1,content:'这里添加文本'
 		}],
-	editBtns:[1]
+	editBtns:[1,13]
 	},
 
 {
@@ -166,7 +189,9 @@ var default_config = ['',
 	{id:1,content:'这里添加文本'},
 	{id:2,src:'images/default.jpg'},
 	{id:3,theme:'images/default.jpg'},
-	{id:4,itmes:['北京','上海','广州','天津','大连']}];
+	{id:4,itmes:['北京','上海','广州','天津','大连']}
+	];
+default_config[13] = {id:13,height:'30px'};
 //组件列表
 var components = ['','fullText','img','msgVerify','locationInfo','imgAd','title','textNav','imgNav','listLink','goodSearch','showcase','subline','blankSpace'];
 //按钮列表
@@ -257,6 +282,7 @@ $(document).ready(function(){
 		loadDefaultComponent(pagelist[page].show);
 		loadDefaultBtn(pagelist[page].editBtns);	
 		//上传数据接口
+		//所有data-form值 [{},{},{}]
 		var uploadModuleConfig = getAllData($("#editor_body .module"));
 		//流程标识active切换
 		$(".dash_bar li:even").eq(page).addClass("active")
@@ -293,6 +319,9 @@ $(document).ready(function(){
 		if(popover.target.dataset.identity == "img"){
 			popover.upload();
 		}
+		if(popover.target.dataset.identity == "blankSpace"){
+			popover.blank();
+		}
 		return false;		
 	});
 	//按钮绑定事件，添加视图模块
@@ -301,7 +330,7 @@ $(document).ready(function(){
 		var relatedComponentId = $this[0].dataset.relateid;
 		var com = default_config[relatedComponentId];
 		addComponentToView(com);
+		$editor.find("li:last").find("div").addClass("current").parent().siblings().find(".module").removeClass('current');
+		$editor.find("li:last").find("div").trigger("click");
 	});
-	//所有data-form值 [{},{},{}]
-	
 });
