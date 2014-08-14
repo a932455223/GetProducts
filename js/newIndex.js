@@ -105,7 +105,95 @@ popover.upload = function(){
 };
 popover.blank = function(){
 	var _this = this;
-	$('.slideControl').slideControl();
+	//插件代码开始
+	var defaults = {
+		speed: 400,
+		lowerBound: 1,
+		upperBound: 10
+	};
+	var options = $.extend(defaults, options);
+	
+	$(".slideControl").each(function() {
+		
+		// set vars
+		var o = options;
+		var controller = false;
+		var position = 0;
+		var obj = this;
+		$(this).addClass('slideControlInput');
+		var parent = $(this).parent();
+		var label = $(parent).find('label');
+		parent.html("<label>" + $(label).html() + "</label><span class=\"slideControlContainer\"><span class=\"slideControlFill\" style=\"width:" + $(obj).val()*10 + "%\"><span class=\"slideControlHandle\"></span></span></span>" + $(obj).wrap("<span></span>").parent().html());
+		var container = parent.find('.slideControlContainer');
+		var fill = container.find('.slideControlFill');
+		var handle = fill.find('.slideControlHandle');
+		var input = parent.find('input');
+		var containerWidth = container.outerWidth() + 1;
+		var handleWidth = $(handle).outerWidth();
+		var offset = $(container).offset();
+		var animate = function(value){$(fill).animate({ width: value + "%"}, o.speed);};
+		
+		$(window).resize(function() {
+			offset = $(container).offset();
+		});
+
+		
+		// when user clicks anywhere on the slider
+		$(container).click(function(e) {		
+			e.preventDefault();
+			position = checkBoundaries(Math.round(((e.pageX - offset.left + handleWidth/2)/containerWidth)*100));
+			
+			animate(position);
+			$(input).val(position/10);
+		});
+		
+		// when user clicks handle
+		$(handle).mousedown(function(e) {
+			e.preventDefault();
+			controller = true;
+			$(document).mousemove(function(e) {
+				e.preventDefault();
+				position = checkBoundaries(Math.round(((e.pageX - offset.left + handleWidth/2)/containerWidth)*100));
+				if (controller) {	
+					$(fill).width(position + "%");
+					$(input).val(position/10);
+				}
+			});
+			$(document).mouseup(function() {
+				e.preventDefault();
+				controller = false;
+			});
+		});
+		
+		// when user changes value in input
+		$(input).change(function() {
+			var value = checkBoundaries($(this).val()*10);
+			if ($(this).val() > o.upperBound)
+				$(input).val(o.upperBound);
+			else if ($(this).val() < o.lowerBound)
+				$(input).val(o.lowerBound);
+			animate(value);
+		});
+		
+	});
+	
+	// checks if value is within boundaries
+	function checkBoundaries(value) {
+		if (value < options.lowerBound*10)
+			return options.lowerBound*10;
+		else if (value > options.upperBound*10)
+			return options.upperBound*10;
+		else
+			return value;
+	}
+	
+	//插件代码结束
+	//获取初始化高度
+	_this.target.style.height = _this.getDataForm()+"px";
+	var value = parseInt(_this.getDataForm());
+	// console.log(_this.getDataForm())
+	$(".slideControlInput").val(value/10);
+	$(".slideControlFill").animate({ width: value + "%"}, 400);
 	$("#popover").on("mousemove mousedown mouseout",'.slideControlContainer',setHeight);
 	function setHeight(){
 		//document.title = $('.slideControlInput').val();
@@ -131,7 +219,16 @@ popover.setDataForm = function(option){
 	popover.target.dataset.form = JSON.stringify(obj);
 };
 popover.getDataForm = function(){
-	return $(popover.target).html();
+	switch(this.target.dataset.identity){
+		case "fullText":
+		return $(popover.target).html();
+		case "img":
+		return $(popover.target).attr("src");
+		case "blankSpace":
+		return $(popover.target).height();
+		break;
+	}	
+	
 	// return JSON.parse(popover.target.dataset.form);
 };
 //切换验证框皮肤
